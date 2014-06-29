@@ -29,10 +29,15 @@ hvacState match {
 test with a spy of hvac instead of on hvac directly
 
 do it immutable
+  hvac state should not be mutable
 
 magic numbers
 
+use spy appropriately
+
 refactor tests
+
+
 }
 */
 
@@ -105,7 +110,7 @@ class EnvironmentControllerTest extends FlatSpec with Matchers {
     }
   }
 
-  it should "not heat or cool when in ideal range and it was cooling" in {
+  it should "not heat or cool when 65-75 deg and it was cooling" in {
     for (temperature <- List(65, 70, 75)) {
       val hvac = new HvacSpy(false, true, false, temperature)
       val envCntl = EnvironmentController(hvac)
@@ -118,5 +123,42 @@ class EnvironmentControllerTest extends FlatSpec with Matchers {
       )
     }
   }
+
+  it should "not run cooler if run within 3 minutes" in {
+    val hvac = new HvacSpy(false, true, false, 76)
+    var envCntl = EnvironmentController(hvac)
+
+    envCntl.tick() should have (
+      'heat (false),
+      'cool (true),
+      'fan  (true),
+      'temperature (76)
+    )
+
+    envCntl = envCntl.changeTemperature(74)
+    envCntl.tick() should have ( // 1 min
+      'heat (false),
+      'cool (false),
+      'fan  (false),
+      'temperature (74)
+    )
+
+    envCntl = envCntl.changeTemperature(76)
+    envCntl.tick() should have ( // 2 min
+      'heat (false),
+      'cool (false),
+      'fan  (false),
+      'temperature (76)
+    )
+
+    envCntl = envCntl.changeTemperature(76)
+    envCntl.tick() should have ( // 3 min
+      'heat (false),
+      'cool (true),
+      'fan  (true),
+      'temperature (76)
+    )
+  }
+
 
 }

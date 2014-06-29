@@ -8,23 +8,42 @@ case class Hvac(
 )
 
 
-case class EnvironmentController(hvac: Hvac) {
+case class EnvironmentController(var hvac: Hvac) {
 
-  def tick() : Hvac = hvac match {
-    case Hvac(_, _, _, temperature) if temperature < 65 => heatUp
-    case Hvac(_, _, _, temperature) if temperature > 75 => coolDown
-    case _ => turnEverythingOff
+
+  def tick() : Hvac = {
+    if (preventCoolingCounter > 0) {
+      preventCoolingCounter -= 1
+    }
+
+    hvac match {
+      case Hvac(_, _, _, temperature) if temperature < 65 => heatUp
+      case Hvac(_, _, _, temperature) if temperature > 75 && !cooledRecently => coolDown
+      case _ => turnEverythingOff
+    }
   }
 
   def heatUp() : Hvac = {
-    Hvac(true, false, true, hvac.temperature)
+    hvac = Hvac(true, false, true, hvac.temperature)
+    hvac
   }
 
+  var preventCoolingCounter = 0
+  def cooledRecently() : Boolean = preventCoolingCounter > 0
   def coolDown() : Hvac = {
-    Hvac(false, true, true, hvac.temperature)
+    hvac = Hvac(false, true, true, hvac.temperature)
+    preventCoolingCounter = 3
+
+    hvac
   }
 
   def turnEverythingOff() : Hvac = {
-    Hvac(false, false, false, hvac.temperature)
+    hvac = Hvac(false, false, false, hvac.temperature)
+    hvac
+  }
+
+  def changeTemperature(newTemperature: Double) : EnvironmentController = {
+    hvac = hvac.copy(temperature = newTemperature)
+    this
   }
 }
