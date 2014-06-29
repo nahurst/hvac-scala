@@ -1,15 +1,6 @@
 import org.scalatest.{Matchers, FlatSpec}
 
 /*
-environment controller
-  tick
-
-hvac
-heat(bool)
-cool(bool)
-fan(bool)
-getTemp
-
 if it's cold (less than 65 degrees)
 heat
 if it's hot (greater than 75 degrees)
@@ -19,25 +10,14 @@ after the heater stops
 after cooler stops
 don't turn it back on for three minutes
 
-use matchers
-hvacState match {
-  case HVAC(heat, cool, fan, temp) if temp < 65 => heatUp
-  case HVAC(heat, cool, fan, temp) if temp > 75 && !coolerRunRecently => coolDown
-  case _ if heaterStoppedRecently => runFan
-  case _ => doNothing
-
-what if you do: need heat (keep running fan), need cool, need
-
 do it immutable
   hvac state should not be mutable
 
-magic numbers
 do private methods
-
-move counters to separate countdown class
 
 use spy appropriately
   will be a problem because we create hvac so many times
+  spy should allow writing temperature. others should not: use trait
 
 refactor tests
 

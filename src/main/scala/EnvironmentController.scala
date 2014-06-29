@@ -7,36 +7,40 @@ case class Hvac(
   temperature: Double
 )
 
+class Countdown(defaultReset: Int) {
+  var counter = 0
+  def tick() = if (counter > 0) counter -= 1
+  def isDone(): Boolean = counter == 0
+  def reset() = counter = defaultReset
+}
 
 case class EnvironmentController(var hvac: Hvac) {
 
+  val coolerCountdown = new Countdown(3)
+  val heaterCountdown = new Countdown(5)
 
   def tick() : Hvac = {
-    if (preventCoolingCounter > 0) {
-      preventCoolingCounter -= 1
-    }
-    if (keepFanRunningCounter > 0) {
-      keepFanRunningCounter -= 1
-    }
+    coolerCountdown.tick()
+    heaterCountdown.tick()
 
     hvac match {
       case Hvac(_, _, _, temperature) if temperature < 65 => heatUp
-      case Hvac(_, _, _, temperature) if temperature > 75 && !cooledRecently => coolDown
-      case _ if heatedRecently => runFan
+      case Hvac(_, _, _, temperature) if temperature > 75 && coolerCountdown.isDone() => coolDown
+      case _ if !heaterCountdown.isDone() => runFan
       case _ => turnEverythingOff
     }
   }
 
   def heatUp() : Hvac = {
     hvac = Hvac(true, false, true, hvac.temperature)
-    keepFanRunningCounter = 5
+    heaterCountdown.reset()
 
     hvac
   }
 
   def coolDown() : Hvac = {
     hvac = Hvac(false, true, true, hvac.temperature)
-    preventCoolingCounter = 3
+    coolerCountdown.reset()
 
     hvac
   }
@@ -55,10 +59,4 @@ case class EnvironmentController(var hvac: Hvac) {
     hvac = hvac.copy(temperature = newTemperature)
     this
   }
-
-  var preventCoolingCounter = 0
-  def cooledRecently() : Boolean = preventCoolingCounter > 0
-
-  var keepFanRunningCounter = 0
-  def heatedRecently() : Boolean = keepFanRunningCounter > 0
 }
