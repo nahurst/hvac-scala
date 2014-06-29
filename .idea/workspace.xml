@@ -10,8 +10,8 @@
     <file path="/Hello.scala" changelist="41615a59-1f7f-4cef-98dd-75871921db65" time="1403391955802" ignored="false" />
     <file path="/HelloSpec.scala" changelist="41615a59-1f7f-4cef-98dd-75871921db65" time="1404012483481" ignored="false" />
     <file path="/fragment.java" changelist="41615a59-1f7f-4cef-98dd-75871921db65" time="1404012431546" ignored="false" />
-    <file path="/EnvironmentControllerTest.scala" changelist="41615a59-1f7f-4cef-98dd-75871921db65" time="1404082139265" ignored="false" />
-    <file path="/EnvironmentController.scala" changelist="41615a59-1f7f-4cef-98dd-75871921db65" time="1404082686500" ignored="false" />
+    <file path="/EnvironmentControllerTest.scala" changelist="41615a59-1f7f-4cef-98dd-75871921db65" time="1404082782359" ignored="false" />
+    <file path="/EnvironmentController.scala" changelist="41615a59-1f7f-4cef-98dd-75871921db65" time="1404083967855" ignored="false" />
     <file path="/Hvac.scala" changelist="41615a59-1f7f-4cef-98dd-75871921db65" time="1404013364642" ignored="false" />
     <file path="/Dummy.txt" changelist="41615a59-1f7f-4cef-98dd-75871921db65" time="1404060426321" ignored="false" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -66,7 +66,7 @@
       </breakpoint>
     </breakpoint_any>
     <line_breakpoints>
-      <breakpoint url="file://$PROJECT_DIR$/src/main/scala/EnvironmentController.scala" line="54" class="EnvironmentController" package="">
+      <breakpoint url="file://$PROJECT_DIR$/src/main/scala/EnvironmentController.scala" line="46" class="EnvironmentController" package="">
         <option name="ENABLED" value="true" />
         <option name="LOG_ENABLED" value="false" />
         <option name="LOG_EXPRESSION_ENABLED" value="false" />
@@ -105,7 +105,7 @@
           <file leaf-file-name="EnvironmentControllerTest.scala" pinned="false" current="true" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/src/test/scala/EnvironmentControllerTest.scala">
               <provider selected="true" editor-type-id="text-editor">
-                <state line="14" column="0" selection-start="300" selection-end="300" vertical-scroll-proportion="0.3004292">
+                <state line="8" column="0" selection-start="280" selection-end="280" vertical-scroll-proportion="0.17167382">
                   <folding />
                 </state>
               </provider>
@@ -118,7 +118,7 @@
           <file leaf-file-name="EnvironmentController.scala" pinned="false" current="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/src/main/scala/EnvironmentController.scala">
               <provider selected="true" editor-type-id="text-editor">
-                <state line="24" column="33" selection-start="672" selection-end="672" vertical-scroll-proportion="0.51502144">
+                <state line="34" column="0" selection-start="913" selection-end="913" vertical-scroll-proportion="0.7296137">
                   <folding />
                 </state>
               </provider>
@@ -548,14 +548,14 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/scala/EnvironmentController.scala">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="24" column="33" selection-start="672" selection-end="672" vertical-scroll-proportion="0.51502144">
+        <state line="34" column="0" selection-start="913" selection-end="913" vertical-scroll-proportion="0.7296137">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/test/scala/EnvironmentControllerTest.scala">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="14" column="0" selection-start="300" selection-end="300" vertical-scroll-proportion="0.3004292">
+        <state line="8" column="0" selection-start="280" selection-end="280" vertical-scroll-proportion="0.17167382">
           <folding />
         </state>
       </provider>

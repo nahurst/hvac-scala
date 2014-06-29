@@ -5,14 +5,17 @@ case class Hvac(
   temperature: Double
 )
 
-class Countdown(defaultReset: Int) {
-  var counter = 0
+case class Countdown(defaultReset: Int, var counter: Int = 0) {
   def tick() = if (counter > 0) counter -= 1
   def isDone(): Boolean = counter == 0
   def reset() = counter = defaultReset
 }
 
-case class EnvironmentController(var hvac: Hvac) {
+case class EnvironmentController(
+  hvac: Hvac,
+  coolerCountdown: Countdown = Countdown(3),
+  heaterCountdown: Countdown = Countdown(5)
+) {
 
   def tick() : Hvac = {
     coolerCountdown.tick()
@@ -27,39 +30,20 @@ case class EnvironmentController(var hvac: Hvac) {
   }
 
   def changeTemperature(newTemperature: Double) : EnvironmentController = {
-    hvac = hvac.copy(temperature = newTemperature)
-    this
+    copy(hvac.copy(temperature = newTemperature))
   }
 
-  // ======== Privates ===========
-  // is there a better way of grouping these?
-
-  private val coolerCountdown = new Countdown(3)
-  private val heaterCountdown = new Countdown(5)
-
   private def heatUp() : Hvac = {
-    hvac = Hvac(true, false, true, hvac.temperature)
     heaterCountdown.reset()
-
-    hvac
+    Hvac(true, false, true, hvac.temperature)
   }
 
   private def coolDown() : Hvac = {
-    hvac = Hvac(false, true, true, hvac.temperature)
     coolerCountdown.reset()
-
-    hvac
+    Hvac(false, true, true, hvac.temperature)
   }
 
-  private def turnEverythingOff() : Hvac = {
-    hvac = Hvac(false, false, false, hvac.temperature)
-    hvac
-  }
-
-  private def runFan() : Hvac = {
-    hvac = Hvac(false, false, true, hvac.temperature)
-    hvac
-  }
-
+  private def runFan() : Hvac = Hvac(false, false, true, hvac.temperature)
+  private def turnEverythingOff() : Hvac = Hvac(false, false, false, hvac.temperature)
 
 }

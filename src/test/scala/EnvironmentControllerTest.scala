@@ -1,17 +1,11 @@
 import org.scalatest.{Matchers, FlatSpec}
 
 /*
-if it's cold (less than 65 degrees)
-heat
-if it's hot (greater than 75 degrees)
-cool
-after the heater stops
-  run the fan for five more minutes
-after cooler stops
-don't turn it back on for three minutes
-
-do it immutable
-  hvac state should not be mutable
+Requirements:
+- if it's cold (less than 65 degrees) => heat
+- if it's hot (greater than 75 degrees) => cool
+- after the heater stops => run the fan for five more minutes
+- after cooler stops => don't turn it back on for three minutes
 
 use spy appropriately
   will be a problem because we create hvac so many times
