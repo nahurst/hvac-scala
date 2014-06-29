@@ -1,5 +1,3 @@
-import java.util.Observable
-
 case class Hvac(
   heat: Boolean,
   cool: Boolean,
@@ -16,9 +14,6 @@ class Countdown(defaultReset: Int) {
 
 case class EnvironmentController(var hvac: Hvac) {
 
-  val coolerCountdown = new Countdown(3)
-  val heaterCountdown = new Countdown(5)
-
   def tick() : Hvac = {
     coolerCountdown.tick()
     heaterCountdown.tick()
@@ -31,32 +26,40 @@ case class EnvironmentController(var hvac: Hvac) {
     }
   }
 
-  def heatUp() : Hvac = {
+  def changeTemperature(newTemperature: Double) : EnvironmentController = {
+    hvac = hvac.copy(temperature = newTemperature)
+    this
+  }
+
+  // ======== Privates ===========
+  // is there a better way of grouping these?
+
+  private val coolerCountdown = new Countdown(3)
+  private val heaterCountdown = new Countdown(5)
+
+  private def heatUp() : Hvac = {
     hvac = Hvac(true, false, true, hvac.temperature)
     heaterCountdown.reset()
 
     hvac
   }
 
-  def coolDown() : Hvac = {
+  private def coolDown() : Hvac = {
     hvac = Hvac(false, true, true, hvac.temperature)
     coolerCountdown.reset()
 
     hvac
   }
 
-  def turnEverythingOff() : Hvac = {
+  private def turnEverythingOff() : Hvac = {
     hvac = Hvac(false, false, false, hvac.temperature)
     hvac
   }
 
-  def runFan() : Hvac = {
+  private def runFan() : Hvac = {
     hvac = Hvac(false, false, true, hvac.temperature)
     hvac
   }
 
-  def changeTemperature(newTemperature: Double) : EnvironmentController = {
-    hvac = hvac.copy(temperature = newTemperature)
-    this
-  }
+
 }

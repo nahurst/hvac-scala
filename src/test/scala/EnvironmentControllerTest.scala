@@ -13,8 +13,6 @@ don't turn it back on for three minutes
 do it immutable
   hvac state should not be mutable
 
-do private methods
-
 use spy appropriately
   will be a problem because we create hvac so many times
   spy should allow writing temperature. others should not: use trait
