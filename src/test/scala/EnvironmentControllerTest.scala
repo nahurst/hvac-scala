@@ -26,17 +26,22 @@ hvacState match {
   case _ if heaterStoppedRecently => runFan
   case _ => doNothing
 
-test with a spy of hvac instead of on hvac directly
+what if you do: need heat (keep running fan), need cool, need
 
 do it immutable
   hvac state should not be mutable
 
 magic numbers
+do private methods
+
+move counters to separate countdown class
 
 use spy appropriately
+  will be a problem because we create hvac so many times
 
 refactor tests
 
+how to fix the weird matcher "_ if"
 
 }
 */
@@ -125,10 +130,10 @@ class EnvironmentControllerTest extends FlatSpec with Matchers {
   }
 
   it should "not run cooler if run within 3 minutes" in {
-    val hvac = new HvacSpy(false, true, false, 76)
-    var envCntl = EnvironmentController(hvac)
+    val hvac = new HvacSpy(false, false, false, 76)
 
-    envCntl.tick() should have (
+    var envCntl = EnvironmentController(hvac)
+    envCntl.tick() should have ( // 0 min
       'heat (false),
       'cool (true),
       'fan  (true),
@@ -158,6 +163,103 @@ class EnvironmentControllerTest extends FlatSpec with Matchers {
       'fan  (true),
       'temperature (76)
     )
+  }
+
+  // don't think this applies
+//  it should "continue running cooler if still too hot" in {
+//    val hvac = new HvacSpy(false, false, false, 76)
+//    var envCntl = EnvironmentController(hvac)
+//    envCntl.tick() should have (
+//      'heat (false),
+//      'cool (true),
+//      'fan  (true),
+//      'temperature (76)
+//    )
+//
+//    envCntl = envCntl.changeTemperature(76)
+//    envCntl.tick() should have (
+//      'heat (false),
+//      'cool (true),
+//      'fan  (true),
+//      'temperature (76)
+//    )
+//  }
+
+  it should "run fan for 5 minutes after heating" in {
+    val hvac = new HvacSpy(false, false, false, 64)
+    var envCntl = EnvironmentController(hvac)
+
+    envCntl.tick() should have ( // 0 min
+      'heat (true),
+      'cool (false),
+      'fan  (true),
+      'temperature (64)
+    )
+
+    for (i <- 1 to 4) {
+      envCntl = envCntl.changeTemperature(66)
+      envCntl.tick() should have ( // 1-4 min
+        'heat (false),
+        'cool (false),
+        'fan  (true),
+        'temperature (66)
+      )
+    }
+
+    envCntl = envCntl.changeTemperature(66)
+    envCntl.tick() should have ( // 1-4 min
+      'heat (false),
+      'cool (false),
+      'fan  (false),
+      'temperature (66)
+    )
+  }
+
+  it should "continue to run fan after heating even if cooling soon after" in {
+    val hvac = new HvacSpy(false, false, false, 64)
+    var envCntl = EnvironmentController(hvac)
+
+    envCntl.tick() should have ( // 0 min
+      'heat (true),
+      'cool (false),
+      'fan  (true),
+      'temperature (64)
+    )
+
+    envCntl = envCntl.changeTemperature(66)
+    envCntl.tick() should have ( // 1 min
+      'heat (false),
+      'cool (false),
+      'fan  (true),
+      'temperature (66)
+    )
+
+    envCntl = envCntl.changeTemperature(76)
+    envCntl.tick() should have ( // 2 min
+      'heat (false),
+      'cool (true),
+      'fan  (true),
+      'temperature (76)
+    )
+
+    for (i <- 3 to 4) {
+      envCntl = envCntl.changeTemperature(74)
+      envCntl.tick() should have ( // 3-4 min
+        'heat (false),
+        'cool (false),
+        'fan  (true),
+        'temperature (74)
+      )
+    }
+
+    envCntl = envCntl.changeTemperature(74)
+    envCntl.tick() should have ( // 5 min
+      'heat (false),
+      'cool (false),
+      'fan  (false),
+      'temperature (74)
+    )
+
   }
 
 
