@@ -6,8 +6,8 @@ class HvacSpy(
   override val fan: Boolean,
   override val temperature: Double
 ) extends Hvac(heat, cool, fan, temperature)
-object HvacSpy {
 
+object HvacSpy {
   def as(stateStr: String) = new HvacSpy(
     stateStr.charAt(0).isUpper,
     stateStr.charAt(1).isUpper,
@@ -15,12 +15,7 @@ object HvacSpy {
     stateStr.substring(3).toInt)
 }
 
-
 class EnvironmentControllerTest extends FlatSpec with Matchers {
-
-  "EnvironmentController" should "have tests" in {
-    true should be === true
-  }
 
   var hvac: Hvac = HvacSpy.as("hcf70")
   var envCntl: EnvironmentController = EnvironmentController(hvac)
@@ -62,30 +57,20 @@ class EnvironmentControllerTest extends FlatSpec with Matchers {
 
   it should "not run cooler if run within 3 minutes" in {
     init("hcf76")
-    changeTempTickValidate("hCF", 76)
-    changeTempTickValidate("hcf", 74)
-    changeTempTickValidate("hcf", 76)
-    changeTempTickValidate("hCF", 76)
+    check(List("hCF", "hcf", "hcf", "hCF"),
+          List(76,    74,    76,    76))
   }
 
   it should "run fan for 5 minutes after heating" in {
     init("hcf64")
-    changeTempTickValidate("HcF", 64)
-    changeTempTickValidate("hcF", 66)
-    changeTempTickValidate("hcF", 66)
-    changeTempTickValidate("hcF", 66)
-    changeTempTickValidate("hcF", 66)
-    changeTempTickValidate("hcf", 66)
+    check(List("HcF", "hcF", "hcF", "hcF", "hcF", "hcf"),
+          List(64,    66,    66,    66,    66,    66))
   }
 
   it should "continue to run fan after heating even if cooling soon after" in {
     init("hcf64")
-    changeTempTickValidate("HcF", 64)
-    changeTempTickValidate("hcF", 66)
-    changeTempTickValidate("hCF", 76)
-    changeTempTickValidate("hcF", 74)
-    changeTempTickValidate("hcF", 74)
-    changeTempTickValidate("hcf", 74)
+    check(List("HcF", "hcF", "hCF", "hcF", "hcF", "hcf"),
+          List(64,    66,    76,    74,    74,    74))
   }
 
   def init(stateStr: String) {
@@ -93,15 +78,10 @@ class EnvironmentControllerTest extends FlatSpec with Matchers {
     envCntl = EnvironmentController(hvac)
   }
 
-  def changeTempTickValidate(stateStr: String, temperature: Int) = {
+  def changeTempTickValidate(stateStr: String, temperature: Int) =
     envCntl.changeTemperature(temperature).tick() shouldEqual HvacSpy.as(stateStr + temperature)
-  }
 
-  // don't think this applies
-  //  it should "continue running cooler if still too hot" in {
-  //    init("hcf76")
-  //    changeTempTickValidate("hCF", 76)
-  //    changeTempTickValidate("hCF", 76)
-  //  }
-
+  // Check that the expected state corresponds to the given temperature
+  def check(stateStrs: List[String], temps: List[Int]) =
+    for ((stateStr, temperature) <- stateStrs zip temps) { changeTempTickValidate(stateStr, temperature) }
 }

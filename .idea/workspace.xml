@@ -9,7 +9,7 @@
     <file path="/Hello.scala" changelist="41615a59-1f7f-4cef-98dd-75871921db65" time="1403391955802" ignored="false" />
     <file path="/HelloSpec.scala" changelist="41615a59-1f7f-4cef-98dd-75871921db65" time="1404012483481" ignored="false" />
     <file path="/fragment.java" changelist="41615a59-1f7f-4cef-98dd-75871921db65" time="1404012431546" ignored="false" />
-    <file path="/EnvironmentControllerTest.scala" changelist="41615a59-1f7f-4cef-98dd-75871921db65" time="1404089886397" ignored="false" />
+    <file path="/EnvironmentControllerTest.scala" changelist="41615a59-1f7f-4cef-98dd-75871921db65" time="1404094922122" ignored="false" />
     <file path="/EnvironmentController.scala" changelist="41615a59-1f7f-4cef-98dd-75871921db65" time="1404084074832" ignored="false" />
     <file path="/Hvac.scala" changelist="41615a59-1f7f-4cef-98dd-75871921db65" time="1404013364642" ignored="false" />
     <file path="/Dummy.txt" changelist="41615a59-1f7f-4cef-98dd-75871921db65" time="1404091450945" ignored="false" />
@@ -109,7 +109,7 @@
           <file leaf-file-name="EnvironmentController.scala" pinned="false" current="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/src/main/scala/EnvironmentController.scala">
               <provider selected="true" editor-type-id="text-editor">
-                <state line="33" column="3" selection-start="912" selection-end="912" vertical-scroll-proportion="0.52924395">
+                <state line="39" column="0" selection-start="1026" selection-end="1026" vertical-scroll-proportion="0.8345221">
                   <folding />
                 </state>
               </provider>
@@ -122,7 +122,7 @@
           <file leaf-file-name="EnvironmentControllerTest.scala" pinned="false" current="true" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/src/test/scala/EnvironmentControllerTest.scala">
               <provider selected="true" editor-type-id="text-editor">
-                <state line="95" column="29" selection-start="2645" selection-end="2645" vertical-scroll-proportion="1.8830242">
+                <state line="82" column="0" selection-start="2398" selection-end="2398" vertical-scroll-proportion="0.764622">
                   <folding />
                 </state>
               </provider>
@@ -558,14 +558,14 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/scala/EnvironmentController.scala">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="33" column="3" selection-start="912" selection-end="912" vertical-scroll-proportion="0.52924395">
+        <state line="39" column="0" selection-start="1026" selection-end="1026" vertical-scroll-proportion="0.8345221">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/test/scala/EnvironmentControllerTest.scala">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="95" column="29" selection-start="2645" selection-end="2645" vertical-scroll-proportion="1.8830242">
+        <state line="82" column="0" selection-start="2398" selection-end="2398" vertical-scroll-proportion="0.764622">
           <folding />
         </state>
       </provider>
