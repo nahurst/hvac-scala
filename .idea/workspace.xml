@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="41615a59-1f7f-4cef-98dd-75871921db65" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/scala/EnvironmentControllerTest.scala" afterPath="$PROJECT_DIR$/src/test/scala/EnvironmentControllerTest.scala" />
-    </list>
+    <list default="true" id="41615a59-1f7f-4cef-98dd-75871921db65" name="Default" comment="" />
     <ignored path="hvac-scala.iws" />
     <ignored path=".idea/workspace.xml" />
     <file path="/Hello.scala" changelist="41615a59-1f7f-4cef-98dd-75871921db65" time="1403391955802" ignored="false" />
@@ -12,7 +10,8 @@
     <file path="/EnvironmentControllerTest.scala" changelist="41615a59-1f7f-4cef-98dd-75871921db65" time="1404089886397" ignored="false" />
     <file path="/EnvironmentController.scala" changelist="41615a59-1f7f-4cef-98dd-75871921db65" time="1404084074832" ignored="false" />
     <file path="/Hvac.scala" changelist="41615a59-1f7f-4cef-98dd-75871921db65" time="1404013364642" ignored="false" />
-    <file path="/Dummy.txt" changelist="41615a59-1f7f-4cef-98dd-75871921db65" time="1404060426321" ignored="false" />
+    <file path="/Dummy.txt" changelist="41615a59-1f7f-4cef-98dd-75871921db65" time="1404091450945" ignored="false" />
+    <file path="/README.md" changelist="41615a59-1f7f-4cef-98dd-75871921db65" time="1404091701412" ignored="false" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -27,7 +26,6 @@
     <disable_hints />
   </component>
   <component name="DebuggerManager">
-    <ui_properties default_suspend_policy="SuspendAll" default_condition_enabled="true" />
     <breakpoint_any default_suspend_policy="SuspendAll" default_condition_enabled="true">
       <breakpoint>
         <option name="NOTIFY_CAUGHT" value="true" />
@@ -64,7 +62,7 @@
         <option name="LOG_MESSAGE" value="" />
       </breakpoint>
     </breakpoint_any>
-    <line_breakpoints>
+    <line_breakpoints default_suspend_policy="SuspendAll" default_condition_enabled="true">
       <breakpoint url="file://$PROJECT_DIR$/src/main/scala/EnvironmentController.scala" line="46" class="EnvironmentController" package="">
         <option name="ENABLED" value="true" />
         <option name="LOG_ENABLED" value="false" />
@@ -81,6 +79,7 @@
         <option name="LOG_MESSAGE" value="" />
       </breakpoint>
     </line_breakpoints>
+    <ui_properties default_suspend_policy="SuspendAll" default_condition_enabled="true" />
     <breakpoint_rules />
     <ui_properties />
   </component>
@@ -89,43 +88,20 @@
     <favorites_list name="hvac-scala" />
   </component>
   <component name="FileEditorManager">
-    <splitter split-orientation="horizontal" split-proportion="0.5">
-      <split-first>
-        <leaf>
-          <file leaf-file-name="Hello.scala" pinned="false" current="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/src/main/scala/Hello.scala">
-              <provider selected="true" editor-type-id="text-editor">
-                <state line="5" column="0" selection-start="92" selection-end="92" vertical-scroll-proportion="0.0">
-                  <folding />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="EnvironmentControllerTest.scala" pinned="false" current="true" current-in-tab="true">
-            <entry file="file://$PROJECT_DIR$/src/test/scala/EnvironmentControllerTest.scala">
-              <provider selected="true" editor-type-id="text-editor">
-                <state line="113" column="0" selection-start="3490" selection-end="3490" vertical-scroll-proportion="2.3733907">
-                  <folding />
-                </state>
-              </provider>
-            </entry>
-          </file>
-        </leaf>
-      </split-first>
-      <split-second>
-        <leaf>
-          <file leaf-file-name="EnvironmentController.scala" pinned="false" current="false" current-in-tab="true">
-            <entry file="file://$PROJECT_DIR$/src/main/scala/EnvironmentController.scala">
-              <provider selected="true" editor-type-id="text-editor">
-                <state line="25" column="20" selection-start="608" selection-end="608" vertical-scroll-proportion="0.53648067">
-                  <folding />
-                </state>
-              </provider>
-            </entry>
-          </file>
-        </leaf>
-      </split-second>
-    </splitter>
+    <leaf>
+      <file leaf-file-name="README.md" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/README.md">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="20" column="3" selection-start="436" selection-end="436" vertical-scroll-proportion="0.4366812">
+              <folding />
+            </state>
+          </provider>
+          <provider editor-type-id="MarkdownPreviewEditor">
+            <state />
+          </provider>
+        </entry>
+      </file>
+    </leaf>
   </component>
   <component name="FindManager">
     <FindUsagesManager>
@@ -148,6 +124,7 @@
         <option value="$PROJECT_DIR$/src/main/scala/Hvac.scala" />
         <option value="$PROJECT_DIR$/src/main/scala/EnvironmentController.scala" />
         <option value="$PROJECT_DIR$/src/test/scala/EnvironmentControllerTest.scala" />
+        <option value="$PROJECT_DIR$/README.md" />
       </list>
     </option>
   </component>
@@ -185,8 +162,8 @@
       <sortByType />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="PackagesPane" />
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -263,10 +240,11 @@
     <property name="GoToClass.toSaveIncludeLibraries" value="false" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.includeInheritedMembers" value="false" />
+    <property name="FullScreen" value="false" />
     <property name="MemberChooser.showClasses" value="true" />
     <property name="GoToClass.includeLibraries" value="false" />
-    <property name="options.splitter.details.proportions" value="0.2" />
     <property name="options.searchVisible" value="true" />
+    <property name="options.splitter.details.proportions" value="0.2" />
   </component>
   <component name="RecentsManager">
     <key name="CreateTestDialog.Recents.Supers">
@@ -436,7 +414,7 @@
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.2496361" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.2496361" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -510,7 +488,19 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/main/scala/Hello.scala">
+    <entry file="file://$PROJECT_DIR$/README.md">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/scala/EnvironmentControllerTest.scala">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="107" column="0" selection-start="3236" selection-end="3236" vertical-scroll-proportion="0.0" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/scala/EnvironmentController.scala">
       <provider selected="true" editor-type-id="text-editor">
         <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
           <folding />
@@ -524,16 +514,14 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/scala/HelloSpec.scala">
+    <entry file="file://$PROJECT_DIR$/src/test/scala/EnvironmentControllerTest.scala">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="3" column="0" selection-start="69" selection-end="187" vertical-scroll-proportion="0.042016808">
-          <folding />
-        </state>
+        <state line="107" column="0" selection-start="3236" selection-end="3236" vertical-scroll-proportion="2.2895863" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/scala/Hello.scala">
+    <entry file="file://$PROJECT_DIR$/src/main/scala/EnvironmentController.scala">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="5" column="0" selection-start="92" selection-end="92" vertical-scroll-proportion="0.0">
+        <state line="25" column="20" selection-start="608" selection-end="608" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
@@ -545,18 +533,14 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/scala/EnvironmentController.scala">
+    <entry file="file://$PROJECT_DIR$/README.md">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="25" column="20" selection-start="608" selection-end="608" vertical-scroll-proportion="0.53648067">
+        <state line="20" column="3" selection-start="436" selection-end="436" vertical-scroll-proportion="0.4366812">
           <folding />
         </state>
       </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/scala/EnvironmentControllerTest.scala">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="113" column="0" selection-start="3490" selection-end="3490" vertical-scroll-proportion="2.3733907">
-          <folding />
-        </state>
+      <provider editor-type-id="MarkdownPreviewEditor">
+        <state />
       </provider>
     </entry>
   </component>

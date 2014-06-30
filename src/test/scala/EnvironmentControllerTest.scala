@@ -1,13 +1,5 @@
 import org.scalatest.{Matchers, FlatSpec}
 
-/**
- * Requirements:
- * - if it's cold (less than 65 degrees) => heat
- * - if it's hot (greater than 75 degrees) => cool
- * - after the heater stops => run the fan for five more minutes
- * - after cooler stops => don't turn it back on for three minutes
-*/
-
 class HvacSpy(
   override val heat: Boolean,
   override val cool: Boolean,
