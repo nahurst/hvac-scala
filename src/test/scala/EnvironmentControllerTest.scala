@@ -28,64 +28,64 @@ class EnvironmentControllerTest extends FlatSpec with Matchers {
   it should "heat when too cold" in {
     for (temperature <- 60 to 61) {
       init("hcf" + temperature)
-      changeTempTickValidate(envCntl, "HcF", temperature)
+      changeTempTickValidate("HcF", temperature)
     }
   }
 
   it should "cool when too hot" in {
     for (temperature <- 80 to 81) {
       init("hcf" + temperature)
-      changeTempTickValidate(envCntl, "hCF", temperature)
+      changeTempTickValidate("hCF", temperature)
     }
   }
 
   it should "not heat or cool when 65-75 and it wasn't heating or cooling" in {
     for (temperature <- List(65, 70, 75)) {
       init("hcf" + temperature)
-      changeTempTickValidate(envCntl, "hcf", temperature)
+      changeTempTickValidate("hcf", temperature)
     }
   }
 
   it should "not heat or cool when 65-75 deg and it was heating" in {
     for (temperature <- List(65, 70, 75)) {
       init("Hcf" + temperature)
-      changeTempTickValidate(envCntl, "hcf", temperature)
+      changeTempTickValidate("hcf", temperature)
     }
   }
 
   it should "not heat or cool when 65-75 deg and it was cooling" in {
     for (temperature <- List(65, 70, 75)) {
       init("hCf" + temperature)
-      changeTempTickValidate(envCntl, "hcf", temperature)
+      changeTempTickValidate("hcf", temperature)
     }
   }
 
   it should "not run cooler if run within 3 minutes" in {
     init("hcf76")
-    changeTempTickValidate(envCntl, "hCF", 76)
-    changeTempTickValidate(envCntl, "hcf", 74)
-    changeTempTickValidate(envCntl, "hcf", 76)
-    changeTempTickValidate(envCntl, "hCF", 76)
+    changeTempTickValidate("hCF", 76)
+    changeTempTickValidate("hcf", 74)
+    changeTempTickValidate("hcf", 76)
+    changeTempTickValidate("hCF", 76)
   }
 
   it should "run fan for 5 minutes after heating" in {
     init("hcf64")
-    changeTempTickValidate(envCntl, "HcF", 64)
-    changeTempTickValidate(envCntl, "hcF", 66)
-    changeTempTickValidate(envCntl, "hcF", 66)
-    changeTempTickValidate(envCntl, "hcF", 66)
-    changeTempTickValidate(envCntl, "hcF", 66)
-    changeTempTickValidate(envCntl, "hcf", 66)
+    changeTempTickValidate("HcF", 64)
+    changeTempTickValidate("hcF", 66)
+    changeTempTickValidate("hcF", 66)
+    changeTempTickValidate("hcF", 66)
+    changeTempTickValidate("hcF", 66)
+    changeTempTickValidate("hcf", 66)
   }
 
   it should "continue to run fan after heating even if cooling soon after" in {
     init("hcf64")
-    changeTempTickValidate(envCntl, "HcF", 64)
-    changeTempTickValidate(envCntl, "hcF", 66)
-    changeTempTickValidate(envCntl, "hCF", 76)
-    changeTempTickValidate(envCntl, "hcF", 74)
-    changeTempTickValidate(envCntl, "hcF", 74)
-    changeTempTickValidate(envCntl, "hcf", 74)
+    changeTempTickValidate("HcF", 64)
+    changeTempTickValidate("hcF", 66)
+    changeTempTickValidate("hCF", 76)
+    changeTempTickValidate("hcF", 74)
+    changeTempTickValidate("hcF", 74)
+    changeTempTickValidate("hcf", 74)
   }
 
   def init(stateStr: String) {
@@ -93,15 +93,15 @@ class EnvironmentControllerTest extends FlatSpec with Matchers {
     envCntl = EnvironmentController(hvac)
   }
 
-  def changeTempTickValidate(envCntl:EnvironmentController, stateStr: String, temperature: Int) = {
+  def changeTempTickValidate(stateStr: String, temperature: Int) = {
     envCntl.changeTemperature(temperature).tick() shouldEqual HvacSpy.as(stateStr + temperature)
   }
 
   // don't think this applies
   //  it should "continue running cooler if still too hot" in {
   //    init("hcf76")
-  //    changeTempTickValidate(envCntl, "hCF", 76)
-  //    changeTempTickValidate(envCntl, "hCF", 76)
+  //    changeTempTickValidate("hCF", 76)
+  //    changeTempTickValidate("hCF", 76)
   //  }
 
 }
